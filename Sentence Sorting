@@ -1,0 +1,10 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:  
+        
+        n=s.split()
+        h=[None]*len(n)
+        for i in range(len(n)):
+            k=int(n[i][-1])
+            h[k-1]=n[i][:-1]
+        return ' '.join(map(str,h))
+            
