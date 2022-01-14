@@ -1,0 +1,14 @@
+
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        lst=[]
+        while head!=None:
+            lst.append(head)
+            head=head.next
+        mid=len(lst)//2
+        return lst[mid]
+       
+                
+            
+            
+        
