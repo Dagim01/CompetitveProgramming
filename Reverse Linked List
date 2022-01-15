@@ -1,0 +1,16 @@
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        lst=[]
+        while head!=None:
+            lst.append(head.val)
+            head=head.next
+        lst.reverse()
+        m=ListNode(-1)
+        hed=m
+        for i in range(len(lst)):
+            m.next=ListNode(lst[i])
+            m=m.next
+            
+        return hed.next
+        
+            
