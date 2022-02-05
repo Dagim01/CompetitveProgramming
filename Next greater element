@@ -1,0 +1,33 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        lst=[]
+        kst=[]
+        for i in range(len(nums1)):
+            lst.append(nums1[i])
+            for j in range(len(nums2)):
+                if nums2[j] in lst:
+                    if nums2[j+1] is None:
+                        kst.append(-1)
+                    elif nums2[j+1]is not None and nums2[j+1]>lst[0]:
+                        kst.append(nums2[j+1])
+                    else:
+                        kst.append(-1)
+                # else:
+                #     break
+            lst.pop()
+        return kst
+                
+    
+    
+    
+    
+    #     kst=[]
+    # for i in nums1:
+    #     if i in nums2:
+    #         lst.append(i)
+    # for i in range(len(nums2)):
+    #     if nums2[i] in lst and lst[i+1]>lst[i]:
+    #         kst.append(lst[i+1])
+    #     else:
+    #         kst.append(-1)
+        
