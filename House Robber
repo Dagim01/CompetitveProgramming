@@ -1,0 +1,13 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n=0
+        m=0
+        for i in nums:
+            temp=max(i+ n,m)
+            n=m
+            m=temp
+        return m
+        
+        
+        
+        
