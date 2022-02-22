@@ -1,0 +1,58 @@
+class Solution:
+    #Heapify function to maintain heap property.
+    def heapify(self,arr, n, i):
+        self.HeapUp(arr, n, i)
+        self.HeapDown(arr, n, i)
+
+    def buildHeap(self,arr,n):
+        for i in range(len(arr)):
+            self.HeapUp(arr, n, i)
+    def HeapUp(self,arr, n,i):
+        if i==0:
+            return
+        parent=self.parent(i)
+        if arr[i]<arr[parent]:
+            arr[i],arr[parent]=arr[parent],arr[i]
+            self.HeapUp(arr, n ,parent)
+    def HeapDown(self, arr, n, i):
+        if self.LeftChild(i)>=n:
+            return
+        var=self.LeftChild(i)
+        if self.RightChild(i)<n:
+            if arr[self.RightChild(i)]<arr[var]:
+                var=self.RightChild(i)
+        if arr[i]>arr[var]:
+            arr[i],arr[var]=arr[var],arr[i]
+            self.HeapDown(arr, n ,var)
+    
+    #Function to sort an array using Heap Sort.    
+    def HeapSort(self, arr, n):
+        self.buildHeap(arr,n)
+        for i in range(n):
+            self.RemoveNumber(0,arr,n-i)
+        arr.reverse()
+    
+    def RemoveNumber(self,index,arr,n):
+        arr[index],arr[n-1]=arr[n-1],arr[index]
+        self.heapify(arr, n-1, index)
+   
+    def GetMin(self,arr):
+        return arr[0]
+    def InsertNumber(self, arr, element,n):
+        arr.append(element)
+        self.HeapUp(arr, n-1, n)
+    
+    def UpdateNumber(self, index, element,arr):
+        arr[index]=element
+        self.heapify(index, n, arr)
+    #Helper Functions
+
+    def LeftChild(self, index):
+        return (2*index)+1
+        
+    def RightChild(self, index):
+        return (2*index)+2
+        
+    def parent(self, index):
+        return (index-1)//2
+    
