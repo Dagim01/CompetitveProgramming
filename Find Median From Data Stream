@@ -1,0 +1,27 @@
+class MedianFinder:
+
+    def __init__(self):
+        self.minheap=[]
+        self.maxheap=[]
+        self.result=[]
+        self.count=0
+
+    def addNum(self, num: int) -> None:
+        if self.count%2 == 0:
+            element = -heappushpop(self.minheap, num)
+            heappush(self.maxheap, element)
+        else:
+            element = -heappushpop(self.maxheap, -num)
+            heappush(self.minheap, element)
+        self.count += 1
+        
+    def findMedian(self) -> float:
+        if self.count%2 != 0:
+            return -self.maxheap[0]
+        else:
+            left_max = -self.maxheap[0]
+            right_min = self.minheap[0]
+            result=(float("{:.2f}".format((left_max + right_min)/2)))
+        
+            return result
+        
