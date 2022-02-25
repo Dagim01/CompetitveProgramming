@@ -1,0 +1,20 @@
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        count=0
+        
+        for i in range(len(grid)):
+            left=0
+            right=len(grid[i])-1
+            
+            first=len(grid[i])
+            while left<=right:
+                
+                mid=left+((right-left))//2
+                if grid[i][mid]<0:
+                    first=mid
+                    right=mid-1
+                elif grid[i][mid]>=0:
+                    left= mid+1
+            count+=len(grid[i])-first
+        return count
+                
