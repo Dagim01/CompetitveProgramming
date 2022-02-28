@@ -1,0 +1,20 @@
+class Solution:
+    def findKthNumber(self, m: int, n: int, k: int) -> int:
+        def count(row,col,num):
+            count=0
+            for row in range(1, row+1):
+                count+=min(num//row, col)
+            return count
+        
+        left=1
+        right=(n*m)
+        while left<right:
+            mid=(left+right)//2
+            if count(n,m,mid)<k:
+                left=mid+1
+            else:
+                right=mid
+        return left
+    
+        
+        
