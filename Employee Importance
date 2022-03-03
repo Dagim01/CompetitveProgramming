@@ -1,0 +1,22 @@
+"""
+# Definition for Employee.
+class Employee:
+    def __init__(self, id: int, importance: int, subordinates: List[int]):
+        self.id = id
+        self.importance = importance
+        self.subordinates = subordinates
+"""
+class Solution:
+    def getImportance(self, employees: List['Employee'], id: int) -> int:
+        empImp={}
+        subImp={}
+        for i in employees:
+            empImp[i.id]=i.importance
+            subImp[i.id]=i.subordinates
+            def dfs(id):
+                result=empImp[id]
+                for j in subImp[id]:
+                    result+=dfs(j)
+                return result
+        return dfs(id)
+        
