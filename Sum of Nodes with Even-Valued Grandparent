@@ -1,0 +1,29 @@
+class Solution:
+    def sumEvenGrandparent(self, root: TreeNode) -> int:
+        total = 0
+        def solve(node):
+            nonlocal total
+            if not node:
+                return 
+            
+            if node.left == node.right:
+                return 
+            
+            if node.val%2 == 0:
+                if node.left and node.left.left:
+                    total += node.left.left.val
+                if node.left and node.left.right:
+                    total += node.left.right.val
+                if node.right and node.right.left:
+                    total += node.right.left.val
+                if node.right and node.right.right:
+                    total += node.right.right.val
+                    
+            solve(node.left)
+            solve(node.right)
+        
+        solve(root)
+        
+        return total
+        
+                
