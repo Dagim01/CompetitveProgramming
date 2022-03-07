@@ -1,0 +1,18 @@
+from collections import deque
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        
+        q1=deque()
+        q1.append(start)
+        visited=set()
+        
+        while q1:
+            point=q1.popleft()
+            if arr[point]==0:
+                return True
+            for x in ((point + arr[point]), (point-arr[point])):
+                if 0 <= x<len(arr) and x not in visited:
+                    q1.append(x)
+                    visited.add(point)
+        return False
+            
