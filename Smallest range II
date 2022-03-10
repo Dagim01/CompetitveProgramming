@@ -1,0 +1,9 @@
+class Solution:
+    def smallestRangeII(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        result=nums[-1]-nums[0]
+        for i in range(0, len(nums)-1):
+            minimum = min(nums[0]+k,nums[i+1]-k)
+            maximum= max(nums[-1]-k, nums[i]+k)
+            result=min(result, maximum-minimum)
+        return result
