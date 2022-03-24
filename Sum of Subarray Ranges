@@ -1,0 +1,17 @@
+class Solution:
+    def subArrayRanges(self, nums: List[int]) -> int:
+        lst=[]
+        kst=[]
+        if len(nums)==1:
+            return 0
+        for i in range(len(nums)):
+            lst.append(nums[i])
+            for j in range(i,len(nums)):
+                if lst[i]>nums[j]:
+                    kst.append(lst[i]-nums[j])
+                else:
+                    kst.append(nums[j]-lst[i])
+                lst.append(nums[j])
+                kst.append(max(lst)-min(lst))
+            lst=[]
+        return sum(kst)
