@@ -6,12 +6,10 @@ class Solution:
             return 0
         for i in range(len(nums)):
             lst.append(nums[i])
+            maxx = minn = nums[i] 
             for j in range(i,len(nums)):
-                if lst[i]>nums[j]:
-                    kst.append(lst[i]-nums[j])
-                else:
-                    kst.append(nums[j]-lst[i])
-                lst.append(nums[j])
-                kst.append(max(lst)-min(lst))
+                maxx = max(maxx, nums[j])
+                minn = min(minn, nums[j])
+                kst.append(maxx - minn)
             lst=[]
         return sum(kst)
