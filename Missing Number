@@ -1,0 +1,12 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        length=len(nums)
+        kst=[]
+        for i in range(length+1):
+            kst.append(i)
+
+        for i in kst:
+            if i not in nums:
+                break
+        return i
+            
