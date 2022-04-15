@@ -1,0 +1,20 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        nums.reverse()
+        k %= len(nums)
+        kst=[]
+        lst=[]
+        for i in range(k):
+            kst.append(nums[i])
+        kst.reverse()
+
+        for j in range(k,len(nums)):
+            lst.append(nums[j])
+        lst.reverse()
+        
+        jst = kst+lst
+        for i in range(len(nums)):
+            nums[i]=jst[i]
+        return nums
+            
+        
