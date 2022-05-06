@@ -1,0 +1,36 @@
+class TrieNode:
+    def __init__(self,data):
+        self.data = data
+        self.children = {}
+        self.end = False
+        
+class Trie:
+    def __init__(self):
+        self.root= TrieNode(0)
+    def insertNode(self, data):
+        current=self.root
+        
+        for i in range(len(data)-1, -1, -1):
+            if data[i] not in current.children:
+                current.children[data[i]]=TrieNode(data[i])
+            current=current.children[data[i]]
+        current.end = True
+            
+            
+        
+class Solution:
+    def minimumLengthEncoding(self, words: List[str]) -> int:
+        myTrie = Trie()
+        for word in words:
+            myTrie.insertNode(word)
+        total = 0
+        queue = deque([[myTrie.root,0]])
+        while queue:
+            popped, length = queue.popleft()
+            if popped.children:
+                for letter in popped.children:
+                    queue.append([popped.children[letter],length + 1])
+            else:
+                total += length + 1
+                
+        return total
