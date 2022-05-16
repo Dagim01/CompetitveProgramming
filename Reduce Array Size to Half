@@ -1,0 +1,17 @@
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+        dict1=Counter(arr)
+        lst=[]
+        for numm in dict1:
+            lst.append((dict1[numm],numm))
+        lst.sort()
+        lst.reverse()
+        count=0
+        dount=1
+        for i in range(len(lst)):
+            count+=lst[i][0]
+            if count>=len(arr)//2:
+                return dount
+            else:
+                dount+=1
+            
