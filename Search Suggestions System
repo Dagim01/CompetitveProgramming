@@ -1,0 +1,27 @@
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        trie = {}
+        result = []
+        def insert(word):
+            head = trie
+            for char in word:
+                if char in head:
+                    head[char][1].add(word)
+                else:
+                    head[char] = [{},{word}]
+                head = head[char][0]
+        
+        def search(word):
+            head = trie
+            for char in word:
+                if char in head:
+                    result.append(sorted(list(head[char][1]))[:3])
+                    head = head[char][0]
+                else:
+                    head = {}
+                    result.append([])
+                    
+        for word in products:
+            insert(word)
+        search(searchWord)
+        return result
