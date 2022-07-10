@@ -1,0 +1,30 @@
+class Solution:
+    def goodDaysToRobBank(self, security: List[int], time: int) -> List[int]:
+        lst = []
+        increasing_list = [0]
+        decreasing_list = [0]
+        count=0
+        for i in range(1,len(security)):
+            if security[i]<= security[i-1]:
+                count+=1
+                increasing_list.append(count)
+            else:
+                count=0
+                increasing_list.append(count)   
+        security.reverse()
+        count=0
+        for j in range(1,len(security)):
+            if security[j]<=security[j-1]:
+                count+=1
+                decreasing_list.append(count)
+            else:
+                count=0
+                decreasing_list.append(count)
+        decreasing_list.reverse()
+        for k in range(len(increasing_list)):
+            if increasing_list[k]>=time and decreasing_list[k]>=time:
+                lst.append(k)
+        print(decreasing_list)
+        print(increasing_list)
+        print(lst)
+        return lst
