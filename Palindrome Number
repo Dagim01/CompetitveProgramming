@@ -1,0 +1,11 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        y=str(x)
+        me=True
+        p2= len(y)-1
+        for i in range(len(y)):
+            if y[i]==y[p2]:
+                p2-=1
+            else:
+                me=False
+        return me
