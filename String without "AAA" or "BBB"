@@ -1,0 +1,47 @@
+class Solution:
+    def strWithout3a3b(self, a: int, b: int) -> str:
+ 
+        strr = ""
+        while a + b > 0:
+            if strr[-2 :] == 'aa':
+                b -= 1
+                strr += "b"
+            elif strr[-2 :] == "bb":
+                a -= 1
+                strr += "a" 
+            elif a >= b:
+                a -= 1
+                strr += "a"
+            else:
+                b -= 1
+                strr += "b"
+        return strr
+        
+        
+#         kst= ["b" for i in range(b)]
+#         lst=["a" for j in range(a)]
+#         if a>b:
+#             strr=""
+#             count=0
+#             for i in range(len(lst)+len(kst)):
+#                 if count<2:
+#                     strr+=lst[i]
+#                     count+=1
+#                 else:
+#                     strr+=kst[0]
+#                     kst.pop(0)
+#                     count=0
+#             return strr
+#         elif a<b:
+#             strr=""
+#             count=0
+#             for i in range(len(kst)+len(lst)):
+#                 if count<2:
+#                     strr+=kst[i]
+#                     count+=1
+#                 else:
+#                     strr+=lst[0]
+#                     lst.pop(0)
+#                     count=0
+#             return strr
+        
