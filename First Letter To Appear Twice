@@ -1,0 +1,9 @@
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        dict1={}
+        for i in s:
+            if i in dict1:
+                return i
+            else:
+                dict1[i] = 1
+                
