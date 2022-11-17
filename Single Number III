@@ -1,0 +1,10 @@
+class Solution(object):
+    def xor_func(self,a,b):
+        return a^b
+    def singleNumber(self, nums):
+        group1, group2 = [],[]
+        total_xor = reduce(self.xor_func, nums)
+        mask = total_xor & ~(total_xor - 1)
+        for num in nums:
+            (group1, group2)[(num & mask) > 0].append(num)
+        return [reduce(self.xor_func, group1), reduce(self.xor_func, group2)]
