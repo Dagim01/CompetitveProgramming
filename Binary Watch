@@ -1,0 +1,9 @@
+class Solution:
+    def readBinaryWatch(self, n: int) -> List[str]:
+    	T, m = [], [480,240,120,60,32,16,8,4,2,1]
+    	for i in combinations(m,n):
+    		if 32 in i and 16 in i and 8 in i and 4 in i: continue
+    		h, m = divmod(sum(i),60)
+    		if h > 11: continue
+    		T.append(str(h)+':'+'0'*(m < 10)+str(m))
+    	return T
