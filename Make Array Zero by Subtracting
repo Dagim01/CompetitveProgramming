@@ -3,5 +3,8 @@ class Solution:
         if nums.count(0)==len(nums):
             return 0
         n = set(nums)
-        x = 1 if 0 in n else 0
+        if 0 in n:
+            x=1
+        else: 
+            x=0
         return len(n) - x
