@@ -1,20 +1,15 @@
-from bisect import bisect_left
-from collections import deque
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
-        que=deque()
-        answer=[]
-        answer_logs=[]
+        answer = []
+        answer_logs = []
         for log in logs:
-            lst = log.split(" ")
-            Id = lst.pop(0) 
-            if lst[0].isdigit():
-                que.append(log)
+            if log.split(" ")[1].isdigit():
+                answer.append(log)
             else:
-                log_value = " ".join(lst)
-                value = bisect_left(answer,log_value) 
-                answer.insert(value,log_value)
-                answer_logs.insert(value,log)
-        while que:
-            answer_logs.append(que.popleft())
-        return answer_logs
+                log_id, value = log.split(" ", 1)
+                answer_logs.append((value, log_id))
+        sorted_answer_logs = sorted(answer_logs)
+        sorted_logs = [log[1] + " " + log[0] for log in sorted_answer_logs]
+        for log in answer:
+            sorted_logs.append(log)
+        return sorted_logs
