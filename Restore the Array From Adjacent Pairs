@@ -1,0 +1,16 @@
+class Solution:
+    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+        conns = collections.defaultdict(set)
+        for a, b in adjacentPairs:
+            conns[a].add(b)
+            conns[b].add(a)
+        for node, conn in conns.items():
+            if len(conn) == 1:
+                break
+        result = [node]
+        while conns[node]:
+            new = conns[node].pop()
+            result.append(new)
+            conns[new].remove(node)
+            node = new
+        return result
