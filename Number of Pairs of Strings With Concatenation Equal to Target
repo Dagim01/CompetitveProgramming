@@ -1,0 +1,10 @@
+from collections import Counter
+class Solution:
+    def numOfPairs(self, nums: List[str], target: str) -> int:
+        counter = Counter(nums)
+        res = 0
+        for num in counter.keys():
+            k = len(num)
+            if target[:k] == num:
+                res += counter[num]*counter[target[k:]] if num != target[k:] else counter[num]*(counter[num] - 1)
+        return res
