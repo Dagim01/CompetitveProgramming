@@ -1,0 +1,20 @@
+from heapq import *
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        # lst=[]
+        # heapq.heapify(nums)
+        # for i in range(len(nums)):
+        #     k=heappop(nums)
+        #     lst.append(k*k)
+        # return lst
+        
+
+        
+        lst=[]
+        for i in range(len(nums)):
+            if nums[i]<0:
+                nums[i]= -nums[i]
+        nums.sort()
+        for i in nums:
+            lst.append(i*i)
+        return lst
