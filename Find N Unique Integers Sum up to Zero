@@ -1,0 +1,16 @@
+class Solution:
+    def sumZero(self, n: int) -> List[int]:
+        if n%2!=0:
+            arr=[0]
+        else:
+            arr=[]
+        count=-n
+        for i in range(n//2):
+            arr.append(count)
+            count+=1
+        dount=n
+        for i in range(n//2):
+            arr.append(dount)
+            dount-=1
+        return arr
+        
