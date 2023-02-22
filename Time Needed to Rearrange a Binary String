@@ -1,0 +1,13 @@
+class Solution:
+    def secondsToRemoveOccurrences(self, s):
+        count = 0
+        j = 0
+        for i, e in enumerate(s):
+            if e == '0':
+                continue
+            if count >= i-j and count != 0:
+                count += 1
+            else:
+                count = i-j
+            j +=1
+        return count
