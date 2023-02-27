@@ -1,0 +1,11 @@
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        list1=[0]*2050
+        for birth,death in logs:
+            for year in range(birth,death):
+                list1[year]+=1
+        maximum_population=max(list1)
+        for birth_year in range(len(list1)):
+            if maximum_population==list1[birth_year]:
+                return birth_year
+                break
