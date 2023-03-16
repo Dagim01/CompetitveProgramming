@@ -1,0 +1,9 @@
+import math
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        for i in range(int(math.sqrt(c)) + 1):
+            answer = math.sqrt(c - i*i)
+            if answer==int(answer):
+                return True
+        return False
+                  
